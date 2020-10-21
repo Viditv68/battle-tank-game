@@ -3,23 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TankController : MonoSingletonGeneric<TankController>
+public class TankController : MonoBehaviour
 {
     private float movementSpeed = 12f;
     private float turnSpeed = 180f;
-    public Joystick joystick;
+    private Joystick joystick;
     private Rigidbody rigidbody;
 
     // Use this for initialization
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<FixedJoystick>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     private void FixedUpdate()
