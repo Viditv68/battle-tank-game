@@ -1,32 +1,69 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class TankController : MonoBehaviour
 {
+    public TankScriptableObject tankScriptableObject;
+    public Slider healthSlider;
+    public GameObject bulletPref;
+    public Transform fireTransform;
+
+    private int bulletLayer = 8;
+    private float fireSpeed = 15f;
     private float movementSpeed = 12f;
     private float turnSpeed = 180f;
     private Joystick joystick;
     private Rigidbody rigidbody;
 
-    // Use this for initialization
+    private int health;
+    private int speed;
+    private int damage;
+
+    private void Awake()
+    {
+        InitializeValues();
+    }
+
+    
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<FixedJoystick>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Fire();
+
+        }
     }
 
     private void FixedUpdate()
     {
         Movement();
         Turn();
+    }
+
+    private void Fire()
+    {
+        GameObject bullet = Instantiate(bulletPref, fireTransform.position, fireTransform.rotation);
+        Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
+
+        bulletRigidbody.velocity = fireSpeed * transform.forward;
+
+
+        
+    }
+
+    private void InitializeValues()
+    {
+        health = tankScriptableObject.health;
+        speed = tankScriptableObject.speed;
+        damage = tankScriptableObject.damage;
+
     }
 
     private void Turn()
@@ -49,5 +86,22 @@ public class TankController : MonoBehaviour
         }
     }
 
-    
+
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == bulletLayer)
+        {
+            health -= 10;
+            healthSlider.value = health;
+
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+
 }
