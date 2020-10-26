@@ -6,6 +6,7 @@ public class TankController : MonoBehaviour
     public TankScriptableObject tankScriptableObject;
     public Slider healthSlider;
     public GameObject bulletPref;
+
     public Transform fireTransform;
 
     private int bulletLayer = 8;
@@ -36,7 +37,7 @@ public class TankController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            Fire();
+            bulletPref.GetComponent<BulletController>().Fire(fireTransform, this.gameObject);
 
         }
     }
@@ -47,20 +48,12 @@ public class TankController : MonoBehaviour
         Turn();
     }
 
-    private void Fire()
-    {
-        GameObject bullet = Instantiate(bulletPref, fireTransform.position, fireTransform.rotation);
-        Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-
-        bulletRigidbody.velocity = fireSpeed * transform.forward;
-
-
-        
-    }
+    
 
     private void InitializeValues()
     {
         health = tankScriptableObject.health;
+        healthSlider.maxValue = health;
         speed = tankScriptableObject.speed;
         damage = tankScriptableObject.damage;
 

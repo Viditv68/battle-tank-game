@@ -4,6 +4,7 @@ public class EnemySpawnerService : MonoSingletonGeneric<EnemySpawnerService>
 {
     private GameObject enemytank;
 
+    public Transform enemyTransform;
     public TankScriptableObject[] tankScriptableObject;
 
     private void Update()
@@ -17,6 +18,8 @@ public class EnemySpawnerService : MonoSingletonGeneric<EnemySpawnerService>
 
     private void SpawnEnemyTank(int randomNumber)
     {
-        enemytank = Instantiate(tankScriptableObject[randomNumber].tankPref, Vector3.zero, Quaternion.identity);
+        Quaternion rotation = enemyTransform.rotation;
+        rotation.y = 180;
+        enemytank = Instantiate(tankScriptableObject[randomNumber].tankPref, enemyTransform.position, rotation);
     }
 }

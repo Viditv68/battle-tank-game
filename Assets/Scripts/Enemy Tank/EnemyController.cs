@@ -21,6 +21,8 @@ public class EnemyController : MonoBehaviour
     private void InitializeValues()
     {
         health = tankScriptableObject.health;
+        healthSlider.maxValue = health;
+
         speed = tankScriptableObject.speed;
         damage = tankScriptableObject.speed;
     }
