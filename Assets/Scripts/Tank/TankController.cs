@@ -30,7 +30,7 @@ public class TankController : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<FixedJoystick>();
+        joystick = TankService.Instance.joystick.GetComponent<FixedJoystick>();
     }
 
     private void Update()
