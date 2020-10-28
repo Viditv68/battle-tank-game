@@ -4,14 +4,16 @@ public class EnemySpawnerService : MonoSingletonGeneric<EnemySpawnerService>
 {
     private GameObject enemytank;
 
-    public Transform enemyTransform;
-    public TankScriptableObject[] tankScriptableObject;
+    [SerializeField]
+    private Transform enemyTransform;
+    [SerializeField]
+    private TankScriptableObject[] tankScriptableObject;
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Alpha0))
         {
-            int randomNumber = Random.Range(0, 2);
+            int randomNumber = Random.Range(0, tankScriptableObject.Length);
             SpawnEnemyTank(randomNumber);
         }
     }
@@ -21,5 +23,6 @@ public class EnemySpawnerService : MonoSingletonGeneric<EnemySpawnerService>
         Quaternion rotation = enemyTransform.rotation;
         rotation.y = 180;
         enemytank = Instantiate(tankScriptableObject[randomNumber].tankPref, enemyTransform.position, rotation);
+        enemytank.GetComponent<EnemyController>().InitializeValues(tankScriptableObject[randomNumber]);
     }
 }

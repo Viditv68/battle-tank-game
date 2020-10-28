@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class TankService : MonoSingletonGeneric<TankService>
 {
-    //public GameObject tankPref;
-    public TankScriptableObject tankScriptableObject;
+    [SerializeField]
+    private TankScriptableObject tankScriptableObject;
+    
     public Joystick joystick;
 
 
     private void Start()
     {
         GameObject tank = Instantiate(tankScriptableObject.tankPref, Vector3.zero, Quaternion.identity);
+        tank.GetComponent<TankController>().InitializeValues(tankScriptableObject);
     }
 
     

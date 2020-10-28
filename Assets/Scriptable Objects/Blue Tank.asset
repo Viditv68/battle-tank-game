@@ -15,6 +15,6 @@ MonoBehaviour:
   tankType: 2
   tankPref: {fileID: 1782582301115019565, guid: 9a5c270c525faf94fafd5d5c794845a3,
     type: 3}
-  health: 100
+  health: 50
   speed: 30
   damage: 10

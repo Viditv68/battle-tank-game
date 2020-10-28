@@ -3,9 +3,10 @@ using UnityEngine.UI;
 
 public class TankController : MonoBehaviour
 {
-    public TankScriptableObject tankScriptableObject;
+    [SerializeField]
     public Slider healthSlider;
-    public GameObject bulletPref;
+    [SerializeField]
+    private BulletController bulletController;
 
     public Transform fireTransform;
 
@@ -20,13 +21,7 @@ public class TankController : MonoBehaviour
     private int speed;
     private int damage;
 
-    private void Awake()
-    {
-        InitializeValues();
-    }
-
-    
-
+   
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -37,7 +32,7 @@ public class TankController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            bulletPref.GetComponent<BulletController>().Fire(fireTransform, this.gameObject);
+            bulletController.Fire(fireTransform, this.gameObject);
 
         }
     }
@@ -50,7 +45,7 @@ public class TankController : MonoBehaviour
 
     
 
-    private void InitializeValues()
+    public void InitializeValues(TankScriptableObject tankScriptableObject)
     {
         health = tankScriptableObject.health;
         healthSlider.maxValue = health;

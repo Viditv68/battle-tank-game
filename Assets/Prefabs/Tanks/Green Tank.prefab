@@ -143,7 +143,7 @@ MonoBehaviour:
   tankScriptableObject: {fileID: 11400000, guid: d48d7df84eac92b44a81b1ccf2cd5d3b,
     type: 2}
   healthSlider: {fileID: 4199915909212737989}
-  bulletPref: {fileID: 9101016200889876666, guid: 3986d5a4774088342978eefccfe42eb2,
+  bulletController: {fileID: -1364805615847792083, guid: 3986d5a4774088342978eefccfe42eb2,
     type: 3}
   fireTransform: {fileID: 2159221813727580879}
 --- !u!1 &6874615579239328877

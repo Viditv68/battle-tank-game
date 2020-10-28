@@ -3,9 +3,8 @@ using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
-    public TankScriptableObject tankScriptableObject;
-
-    public Slider healthSlider;
+    [SerializeField]
+    private Slider healthSlider;
 
     private int health;
     private int speed;
@@ -13,12 +12,8 @@ public class EnemyController : MonoBehaviour
 
     private int bulletLayer = 8;
 
-    private void Start()
-    {
-        InitializeValues();
-    }
-
-    private void InitializeValues()
+   
+    public void InitializeValues(TankScriptableObject tankScriptableObject)
     {
         health = tankScriptableObject.health;
         healthSlider.maxValue = health;
