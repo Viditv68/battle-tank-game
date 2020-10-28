@@ -1,32 +1,57 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class TankController : MonoBehaviour
 {
+    [SerializeField]
+    public Slider healthSlider;
+    [SerializeField]
+    private BulletController bulletController;
+
+    public Transform fireTransform;
+
+    private int bulletLayer = 8;
+    private float fireSpeed = 15f;
     private float movementSpeed = 12f;
     private float turnSpeed = 180f;
     private Joystick joystick;
     private Rigidbody rigidbody;
 
-    // Use this for initialization
+    private int health;
+    private int speed;
+    private int damage;
+
+   
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        joystick = GameObject.FindGameObjectWithTag("Joystick").GetComponent<FixedJoystick>();
+        joystick = TankService.Instance.joystick.GetComponent<FixedJoystick>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            bulletController.Fire(fireTransform, this.gameObject);
+
+        }
     }
 
     private void FixedUpdate()
     {
         Movement();
         Turn();
+    }
+
+    
+
+    public void InitializeValues(TankScriptableObject tankScriptableObject)
+    {
+        health = tankScriptableObject.health;
+        healthSlider.maxValue = health;
+        speed = tankScriptableObject.speed;
+        damage = tankScriptableObject.damage;
+
     }
 
     private void Turn()
@@ -49,5 +74,22 @@ public class TankController : MonoBehaviour
         }
     }
 
-    
+
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == bulletLayer)
+        {
+            health -= 10;
+            healthSlider.value = health;
+
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+
 }

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962cc4cfe74f9884cb28f7c2937880ca, type: 3}
+  m_Name: Red Tank
+  m_EditorClassIdentifier: 
+  tankType: 1
+  tankPref: {fileID: 9150186317502852124, guid: 8c5d6fad03a1f1947a8d6adda67916d3,
+    type: 3}
+  health: 30
+  speed: 50
+  damage: 20

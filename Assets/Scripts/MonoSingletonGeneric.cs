@@ -10,7 +10,7 @@ public class MonoSingletonGeneric<T> : MonoBehaviour where T : MonoSingletonGene
 		if(instance == null)
         {
 			instance = (T)this;
-			Debug.Log(instance.name);
+
         }
 
         else 
