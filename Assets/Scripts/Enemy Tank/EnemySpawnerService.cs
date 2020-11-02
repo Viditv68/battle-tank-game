@@ -25,4 +25,5 @@ public class EnemySpawnerService : MonoSingletonGeneric<EnemySpawnerService>
         enemytank = Instantiate(tankScriptableObject[randomNumber].tankPref, enemyTransform.position, rotation);
         enemytank.GetComponent<EnemyController>().InitializeValues(tankScriptableObject[randomNumber]);
     }
+    
 }

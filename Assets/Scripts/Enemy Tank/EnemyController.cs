@@ -1,10 +1,17 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
     [SerializeField]
     private Slider healthSlider;
+
+    [SerializeField]
+    private ParticleSystem tankExplosionParticle;
+
+    [SerializeField]
+    private AudioSource tankExplosionAudio;
 
     private int health;
     private int speed;
@@ -31,8 +38,13 @@ public class EnemyController : MonoBehaviour
 
             if(health <=0)
             {
+                
+                TankService.Instance.DestroyTankOrBullet(tankExplosionParticle, tankExplosionAudio);
                 Destroy(gameObject);
+
             }
         }
     }
+
+    
 }

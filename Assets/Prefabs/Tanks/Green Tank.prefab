@@ -140,10 +140,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc54af84ba3b4b048aea3af95f1f30a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tankScriptableObject: {fileID: 11400000, guid: d48d7df84eac92b44a81b1ccf2cd5d3b,
-    type: 2}
   healthSlider: {fileID: 4199915909212737989}
   bulletController: {fileID: -1364805615847792083, guid: 3986d5a4774088342978eefccfe42eb2,
+    type: 3}
+  tankExplosionParticle: {fileID: 19874418, guid: ee49a9a8678ecf8468eb488e1ac8d42b,
+    type: 3}
+  tankExplosionAudio: {fileID: 5943721179192433082, guid: ee49a9a8678ecf8468eb488e1ac8d42b,
     type: 3}
   fireTransform: {fileID: 2159221813727580879}
 --- !u!1 &6874615579239328877
