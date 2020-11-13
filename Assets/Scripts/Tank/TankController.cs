@@ -8,6 +8,11 @@ public class TankController : MonoBehaviour
     [SerializeField]
     private BulletController bulletController;
 
+    [SerializeField]
+    private ParticleSystem tankExplosionParticle;
+    [SerializeField]
+    private AudioSource tankExplosionAudio;
+
     public Transform fireTransform;
 
     private int bulletLayer = 8;
@@ -86,7 +91,9 @@ public class TankController : MonoBehaviour
 
             if (health <= 0)
             {
+                TankService.Instance.DestroyTankOrBullet(tankExplosionParticle, tankExplosionAudio);
                 Destroy(gameObject);
+                TankService.Instance.playerDead = true;
             }
         }
     }
