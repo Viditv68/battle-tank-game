@@ -82,19 +82,16 @@ public class TankController : MonoBehaviour
 
 
 
-    private void OnTriggerEnter(Collider other)
+    public void ApplyDamage(int damage)
     {
-        if (other.gameObject.layer == bulletLayer)
-        {
-            health -= 10;
-            healthSlider.value = health;
+        health -= 10;
+        healthSlider.value = health;
 
-            if (health <= 0)
-            {
-                TankService.Instance.DestroyTankOrBullet(tankExplosionParticle, tankExplosionAudio);
-                Destroy(gameObject);
-                TankService.Instance.playerDead = true;
-            }
+        if (health <= 0)
+        {
+            TankService.Instance.DestroyTankOrBullet(tankExplosionParticle, tankExplosionAudio);
+            Destroy(gameObject);
+            TankService.Instance.playerDead = true;
         }
     }
 

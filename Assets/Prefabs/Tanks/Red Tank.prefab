@@ -512,6 +512,18 @@ MonoBehaviour:
   tankExplosionParticle: {fileID: 19874418, guid: ee49a9a8678ecf8468eb488e1ac8d42b,
     type: 3}
   tankExplosionAudio: {fileID: 7321735454126767646}
+--- !u!114 &-3739409574497269586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9150186317502852124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1212bf505fde7e4086a29fcb25d9eac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &775473013982379177
 PrefabInstance:
   m_ObjectHideFlags: 0
