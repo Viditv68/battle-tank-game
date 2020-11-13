@@ -857,7 +857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4b8e177bbe077044be9c19c2a0df8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTransform: {fileID: 0}
+  enemyTransform: {fileID: 877632048}
   tankScriptableObject:
   - {fileID: 11400000, guid: e47568d2ee126844f8f2c08618eed6df, type: 2}
   - {fileID: 11400000, guid: 7db919b6a0af5934e8a21756d2375819, type: 2}
