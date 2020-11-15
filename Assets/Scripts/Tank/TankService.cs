@@ -1,14 +1,15 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class TankService : MonoSingletonGeneric<TankService>
 {
     [SerializeField]
     private TankScriptableObject tankScriptableObject;
 
-    [SerializeField]
-    private CameraController camera;
-
     public bool playerDead;
+
+    
     
     public Joystick joystick;
 
@@ -17,7 +18,6 @@ public class TankService : MonoSingletonGeneric<TankService>
     {
         GameObject tank = Instantiate(tankScriptableObject.tankPref, Vector3.zero, Quaternion.identity);
         tank.GetComponent<TankController>().InitializeValues(tankScriptableObject);
-        camera.player = tank;
         playerDead = false;
     }
 

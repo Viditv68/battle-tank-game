@@ -30,6 +30,12 @@ public class BulletController : MonoBehaviour
     {
         TankService.Instance.DestroyTankOrBullet(explosionParticle, bulletExplosionAudio);
         Destroy(gameObject);
+
+        IDamagable damagable = other.gameObject.GetComponent<IDamagable>();
+        if(damagable !=null)
+        {
+            damagable.TakeDamage(10,other.gameObject);
+        }
          
     }
 

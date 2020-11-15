@@ -29,20 +29,17 @@ public class EnemyController : MonoBehaviour
         damage = tankScriptableObject.speed;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void ApplyDamage(int damage)
     {
-        if(other.gameObject.layer == bulletLayer)
+        health -= 10;
+        healthSlider.value = health;
+
+        if (health <= 0)
         {
-            health -= 10;
-            healthSlider.value = health;
 
-            if(health <=0)
-            {
-                
-                TankService.Instance.DestroyTankOrBullet(tankExplosionParticle, tankExplosionAudio);
-                Destroy(gameObject);
+            TankService.Instance.DestroyTankOrBullet(tankExplosionParticle, tankExplosionAudio);
+            Destroy(gameObject);
 
-            }
         }
     }
 
