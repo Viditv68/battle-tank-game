@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
+    public TankView tankView;
     [SerializeField]
     private Slider healthSlider;
 
@@ -19,7 +20,13 @@ public class EnemyController : MonoBehaviour
 
     private int bulletLayer = 8;
 
-   
+    private void Awake()
+    {
+        tankView.Initialize(this);
+        
+    }
+    
+
     public void InitializeValues(TankScriptableObject tankScriptableObject)
     {
         health = tankScriptableObject.health;
@@ -44,4 +51,5 @@ public class EnemyController : MonoBehaviour
     }
 
     
+
 }

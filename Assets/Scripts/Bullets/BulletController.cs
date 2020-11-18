@@ -24,9 +24,8 @@ public class BulletController : MonoBehaviour
         bulletRigidbody.velocity = fireSpeed * tank.transform.forward;
     }
 
-    
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         TankService.Instance.DestroyTankOrBullet(explosionParticle, bulletExplosionAudio);
         Destroy(gameObject);
