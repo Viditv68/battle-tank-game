@@ -139,7 +139,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionParticle: {fileID: 9071199520990225081}
   bulletExplosionAudio: {fileID: 2804898465776684101}
-  fireSpeed: 20
+  explosionController: {fileID: 4442630197241689211, guid: 8fb345cec59ec2941b8eea490354096d,
+    type: 3}
 --- !u!1001 &9071199520976461743
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class TankController : MonoBehaviour
+public class TankController : MonoBehaviour, IDamagable
 {
     [SerializeField]
     public Slider healthSlider;
@@ -12,6 +12,8 @@ public class TankController : MonoBehaviour
     private ParticleSystem tankExplosionParticle;
     [SerializeField]
     private AudioSource tankExplosionAudio;
+    [SerializeField]
+    private ExplosionController explosionController;
 
     public Transform fireTransform;
 
@@ -37,7 +39,7 @@ public class TankController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            bulletController.Fire(fireTransform, this.gameObject);
+            BulletService.Instance.Fire(fireTransform, this.gameObject.transform);
 
         }
     }
@@ -82,14 +84,15 @@ public class TankController : MonoBehaviour
 
 
 
-    public void ApplyDamage(int damage)
+    public void TakeDamage(int damage)
     {
         health -= 10;
         healthSlider.value = health;
 
         if (health <= 0)
         {
-            TankService.Instance.DestroyTankOrBullet(tankExplosionParticle, tankExplosionAudio);
+
+            explosionController.Explode(tankExplosionParticle, tankExplosionAudio); ;
             Destroy(gameObject);
             TankService.Instance.playerDead = true;
         }

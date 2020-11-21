@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IDamagable
 {
     public TankView tankView;
     [SerializeField]
@@ -10,7 +10,8 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField]
     private ParticleSystem tankExplosionParticle;
-
+    [SerializeField]
+    private ExplosionController explosionController;
     [SerializeField]
     private AudioSource tankExplosionAudio;
 
@@ -36,15 +37,14 @@ public class EnemyController : MonoBehaviour
         damage = tankScriptableObject.speed;
     }
 
-    public void ApplyDamage(int damage)
+    public void TakeDamage(int damage)
     {
         health -= 10;
         healthSlider.value = health;
 
         if (health <= 0)
         {
-
-            TankService.Instance.DestroyTankOrBullet(tankExplosionParticle, tankExplosionAudio);
+            explosionController.Explode(tankExplosionParticle, tankExplosionAudio);
             Destroy(gameObject);
 
         }

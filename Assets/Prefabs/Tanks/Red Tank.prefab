@@ -5170,7 +5170,6 @@ GameObject:
   - component: {fileID: 2432584471262694592}
   - component: {fileID: 1651493242156550412}
   - component: {fileID: -3557601527333461291}
-  - component: {fileID: 1339617906994830860}
   m_Layer: 0
   m_Name: Red Tank
   m_TagString: Untagged
@@ -5209,7 +5208,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &8104326247295583519
 BoxCollider:
@@ -5240,6 +5239,8 @@ MonoBehaviour:
   healthSlider: {fileID: 3809733349480499189}
   tankExplosionParticle: {fileID: 19874418, guid: ee49a9a8678ecf8468eb488e1ac8d42b,
     type: 3}
+  explosionController: {fileID: 4442630197241689211, guid: 8fb345cec59ec2941b8eea490354096d,
+    type: 3}
   tankExplosionAudio: {fileID: 8970349475929367001}
 --- !u!114 &2432584471262694592
 MonoBehaviour:
@@ -5267,6 +5268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03429df41a1eedd4ea23f036bf63a48d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
 --- !u!114 &-3557601527333461291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5279,19 +5281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82034e92a3dccdd47aa7edf398e462db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &1339617906994830860
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4416900805728765082}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 11.455369
-  m_Center: {x: 0, y: 0, z: 1.267827}
+  playerTank: {fileID: 6618052805084238408, guid: 812dc3ad48457c94ba09e1ae905169ed,
+    type: 3}
 --- !u!1 &4475885717571109282
 GameObject:
   m_ObjectHideFlags: 0

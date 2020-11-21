@@ -113,7 +113,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &629695557
 BoxCollider:
@@ -128,6 +128,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8509035, y: 1.8162677, z: 2.1253479}
   m_Center: {x: 0.015519738, y: 0.9025322, z: -0.08029437}
+--- !u!135 &6585547363946089352
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6618052805084238408}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 7.0334215
+  m_Center: {x: 0.023481369, y: -4.398466, z: 1.267827}
 --- !u!114 &-2997333866835090073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +160,8 @@ MonoBehaviour:
     type: 3}
   tankExplosionAudio: {fileID: 5943721179192433082, guid: ee49a9a8678ecf8468eb488e1ac8d42b,
     type: 3}
+  explosionController: {fileID: 4442630197241689211, guid: 8fb345cec59ec2941b8eea490354096d,
+    type: 3}
   fireTransform: {fileID: 2159221813727580879}
 --- !u!114 &2424844849659804219
 MonoBehaviour:
@@ -161,6 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingState: {fileID: 0}
+  tankChasingState: {fileID: 0}
 --- !u!1 &6874615579239328877
 GameObject:
   m_ObjectHideFlags: 0
