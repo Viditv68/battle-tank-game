@@ -39,7 +39,7 @@ public class TankController : MonoBehaviour, IDamagable
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            BulletService.Instance.Fire(fireTransform, this.gameObject.transform);
+            BulletService.Instance.Fire(fireTransform);
 
         }
     }
@@ -86,12 +86,11 @@ public class TankController : MonoBehaviour, IDamagable
 
     public void TakeDamage(int damage)
     {
-        health -= 10;
+        health -= damage;
         healthSlider.value = health;
 
         if (health <= 0)
         {
-
             explosionController.Explode(tankExplosionParticle, tankExplosionAudio); ;
             Destroy(gameObject);
             TankService.Instance.playerDead = true;

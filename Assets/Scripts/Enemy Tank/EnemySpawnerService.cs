@@ -25,7 +25,7 @@ public class EnemySpawnerService : MonoSingletonGeneric<EnemySpawnerService>
     {
         Quaternion rotation = enemyTransform[index].rotation;
         rotation.y = 180;
-        enemytank = Instantiate(tankScriptableObject[index].tankPref, enemyTransform[index].position, rotation);
+        enemytank = Instantiate(tankScriptableObject[index].tankPref, enemyTransform[index].position, Quaternion.identity);
         enemytank.GetComponent<EnemyController>().InitializeValues(tankScriptableObject[index]);
     }
     

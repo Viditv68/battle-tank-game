@@ -36,6 +36,36 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &334525145369909047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3751240663914183078}
+  m_Layer: 0
+  m_Name: FireTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3751240663914183078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334525145369909047}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.763, z: 1.606}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2523550355256307459}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1066479291555326316
 GameObject:
   m_ObjectHideFlags: 0
@@ -5167,9 +5197,8 @@ GameObject:
   - component: {fileID: 5147030838462975076}
   - component: {fileID: 8104326247295583519}
   - component: {fileID: 2106038549195955491}
-  - component: {fileID: 2432584471262694592}
-  - component: {fileID: 1651493242156550412}
-  - component: {fileID: -3557601527333461291}
+  - component: {fileID: -6246488387442664212}
+  - component: {fileID: 4637261788361330035}
   m_Layer: 0
   m_Name: Red Tank
   m_TagString: Untagged
@@ -5235,54 +5264,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d645d5e8d10d2d943b5be4008c7f70be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tankView: {fileID: 2432584471262694592}
   healthSlider: {fileID: 3809733349480499189}
   tankExplosionParticle: {fileID: 19874418, guid: ee49a9a8678ecf8468eb488e1ac8d42b,
     type: 3}
   explosionController: {fileID: 4442630197241689211, guid: 8fb345cec59ec2941b8eea490354096d,
     type: 3}
   tankExplosionAudio: {fileID: 8970349475929367001}
---- !u!114 &2432584471262694592
+  startingState: {fileID: -6246488387442664212}
+  tankAttackState: {fileID: 4637261788361330035}
+--- !u!114 &-6246488387442664212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4416900805728765082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1212bf505fde7e4086a29fcb25d9eac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingState: {fileID: 1651493242156550412}
-  tankChasingState: {fileID: -3557601527333461291}
---- !u!114 &1651493242156550412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4416900805728765082}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03429df41a1eedd4ea23f036bf63a48d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
---- !u!114 &-3557601527333461291
+  speed: 8
+--- !u!114 &4637261788361330035
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4416900805728765082}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82034e92a3dccdd47aa7edf398e462db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTank: {fileID: 6618052805084238408, guid: 812dc3ad48457c94ba09e1ae905169ed,
-    type: 3}
+  turret: {fileID: 4475885717571109282}
+  fireTransfrom: {fileID: 3751240663914183078}
 --- !u!1 &4475885717571109282
 GameObject:
   m_ObjectHideFlags: 0
@@ -5311,7 +5327,8 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.000010554959, y: 1.0796412, z: -0.025321364}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 3751240663914183078}
   m_Father: {fileID: 6673463329631214271}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

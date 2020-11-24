@@ -8,6 +8,7 @@ public class TankService : MonoSingletonGeneric<TankService>
     private TankScriptableObject tankScriptableObject;
 
     public bool playerDead;
+
     
     public Joystick joystick;
 

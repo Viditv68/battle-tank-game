@@ -2,14 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(TankView))]
+[RequireComponent(typeof(EnemyController))]
 public class TankState : MonoBehaviour
-{
-    protected TankView tankView;
-    private void Awake()
-    {
-        tankView = GetComponent<TankView>();
-    }
+{ 
     public virtual void OnEnterState()
     {
         this.enabled = true;

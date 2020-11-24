@@ -163,20 +163,6 @@ MonoBehaviour:
   explosionController: {fileID: 4442630197241689211, guid: 8fb345cec59ec2941b8eea490354096d,
     type: 3}
   fireTransform: {fileID: 2159221813727580879}
---- !u!114 &2424844849659804219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6618052805084238408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1212bf505fde7e4086a29fcb25d9eac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingState: {fileID: 0}
-  tankChasingState: {fileID: 0}
 --- !u!1 &6874615579239328877
 GameObject:
   m_ObjectHideFlags: 0

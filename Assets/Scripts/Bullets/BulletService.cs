@@ -9,12 +9,12 @@ public class BulletService : MonoSingletonGeneric<BulletService>
     [SerializeField]
     private float fireSpeed = 20f;
 
-    public void Fire(Transform fireTransform, Transform tank)
+    public void Fire(Transform fireTransform)
     {
 
         GameObject bullet = Instantiate(BulletPrefab, fireTransform.position, fireTransform.rotation);
         Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
 
-        bulletRigidbody.velocity = fireSpeed * tank.transform.forward;
+        bulletRigidbody.velocity = fireSpeed * fireTransform.forward;
     }
 }

@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour, IDamagable
 {
-    public TankView tankView;
     [SerializeField]
     private Slider healthSlider;
 
@@ -15,18 +13,22 @@ public class EnemyController : MonoBehaviour, IDamagable
     [SerializeField]
     private AudioSource tankExplosionAudio;
 
+    [SerializeField]
+    private TankState startingState;
+    [SerializeField]
+    private TankAttackState tankAttackState;
+
     private int health;
     private int speed;
     private int damage;
 
-    private int bulletLayer = 8;
+    private TankState currentState;
 
-    private void Awake()
+
+    private void Start()
     {
-        tankView.Initialize(this);
-        
+        ChangeState(startingState);
     }
-    
 
     public void InitializeValues(TankScriptableObject tankScriptableObject)
     {
@@ -39,17 +41,44 @@ public class EnemyController : MonoBehaviour, IDamagable
 
     public void TakeDamage(int damage)
     {
-        health -= 10;
+        health -= damage;
         healthSlider.value = health;
 
         if (health <= 0)
         {
             explosionController.Explode(tankExplosionParticle, tankExplosionAudio);
             Destroy(gameObject);
-
         }
     }
 
-    
+    public void ChangeState(TankState newState)
+    {
+        if (currentState != null)
+        {
+            currentState.OnExitState();
+        }
+
+        currentState = newState;
+        Debug.Log(currentState);
+        currentState.OnEnterState();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<TankController>())
+        {
+            ChangeState(tankAttackState);
+            gameObject.GetComponent<TankAttackState>().InitilaizePlayerTank(other.gameObject.transform);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.GetComponent<TankController>())
+        {
+            ChangeState(startingState);
+        }
+    }
+
+
 
 }
