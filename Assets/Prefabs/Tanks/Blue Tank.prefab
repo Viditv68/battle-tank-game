@@ -366,6 +366,7 @@ MonoBehaviour:
   tankExplosionAudio: {fileID: 6311521568512011717}
   startingState: {fileID: -5871676647182581700}
   tankAttackState: {fileID: -6199441174583088417}
+  tankTurret: {fileID: 5371159214569885336}
 --- !u!114 &-5871676647182581700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,7 +374,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1782582301115019565}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03429df41a1eedd4ea23f036bf63a48d, type: 3}
   m_Name: 

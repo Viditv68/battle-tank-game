@@ -2,14 +2,20 @@
 
 public class ExplosionController : MonoBehaviour
 {
-    public void Explode(ParticleSystem explosionParticle, AudioSource explosionAudio)
+
+    [SerializeField]
+    private ParticleSystem tankExplosionParticle;
+    
+    [SerializeField]
+    private ParticleSystem bulletExplosionParticle;
+
+
+    public void Explode(ParticleSystem explosionParticle )
     {
         explosionParticle.transform.parent = null;
-
         explosionParticle.Play();
-        explosionAudio.Play();
-
         Destroy(explosionParticle.gameObject, 2f);
-
     }
+
+   
 }

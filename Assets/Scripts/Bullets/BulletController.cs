@@ -12,8 +12,7 @@ public class BulletController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        explosionController.Explode(explosionParticle, bulletExplosionAudio);
-        
+        explosionController.Explode(explosionParticle);
         Destroy(gameObject);
 
         IDamagable damagable = other.gameObject.GetComponent<IDamagable>();

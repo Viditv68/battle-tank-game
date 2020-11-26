@@ -1,16 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TankAttackState : TankState
 {
-    [SerializeField]
-    private GameObject turret;
+
     [SerializeField]
     private Transform fireTransfrom;
     private Transform playerTankPosition;
 
-    private float nextFire = 3;
+    private float nextFire = 3f;
     
     public override void OnEnterState()
     {
@@ -27,23 +27,20 @@ public class TankAttackState : TankState
 
     private void Update()
     {
-        if(playerTankPosition != null)
-        {
-            turret.transform.LookAt(playerTankPosition);
+        Fire();
+    }
 
-            nextFire += Time.deltaTime;
-            if(nextFire > 3)
-            {
-                BulletService.Instance.Fire(fireTransfrom);
-                nextFire = 0;
-            }
+    private void Fire()
+    {
+        nextFire += Time.deltaTime;
+        if (nextFire > 3f)
+        {
+            BulletService.Instance.Fire(fireTransfrom);
+            nextFire = 0f;
         }
     }
 
-    public void InitilaizePlayerTank(Transform playerTankPosition)
-    {
-        this.playerTankPosition = playerTankPosition;
-    }
+  
 
 
 

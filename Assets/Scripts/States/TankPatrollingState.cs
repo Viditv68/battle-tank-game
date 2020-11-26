@@ -15,6 +15,8 @@ public class TankPatrollingState : TankState
     public float speed;
     private float speedRef;
     private int direction = 1;
+
+    private bool isTurning = false;
     
     private void Awake()
     {
@@ -42,36 +44,39 @@ public class TankPatrollingState : TankState
         
         if (Mathf.Abs(moveToSpot.z - transform.position.z) < 0.1f)
         {
-
-            StartCoroutine(Turn());
-            if (moveToSpot == spot2)
-            {
-                moveToSpot = tankStartingPosition;
-                direction = -1;
-            }
-            else if (moveToSpot == tankStartingPosition)
-            {
-                moveToSpot = spot2;
-                direction = 1;
-            }
-
+            ChangeSpot();
         }
        
     }
 
+    private void ChangeSpot()
+    {
+        StartCoroutine(Turn());
+
+        if (moveToSpot == spot2)
+        {
+            moveToSpot = tankStartingPosition;
+            direction = -1;
+        }
+        else if (moveToSpot == tankStartingPosition)
+        {
+            moveToSpot = spot2;
+            direction = 1;
+        }
+    }
+
     private void Move(float speed)
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime * direction, Space.World);
+        if(!isTurning)
+            transform.Translate(Vector3.forward * speed * Time.deltaTime * direction, Space.World);
     }
-    
     
 
     IEnumerator Turn()
     {
-        float tmp = speed;
-        speed = 0;
+        isTurning = true;
         yield return new WaitForSeconds(2f);
-        speed = tmp;
+        isTurning = false;
     }
 
 }

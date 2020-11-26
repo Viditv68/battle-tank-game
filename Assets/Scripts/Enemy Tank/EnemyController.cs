@@ -21,13 +21,28 @@ public class EnemyController : MonoBehaviour, IDamagable
     private int health;
     private int speed;
     private int damage;
+    private int turretSpeed = 20;
 
     private TankState currentState;
 
+    [SerializeField]
+    private GameObject tankTurret;
+
+    private bool rotateTurret;
 
     private void Start()
     {
+        rotateTurret = true;
         ChangeState(startingState);
+    }
+
+    private void Update()
+    {
+        if(rotateTurret)
+        {
+            tankTurret.transform.Rotate(Vector3.up * turretSpeed * Time.deltaTime);
+        }
+            
     }
 
     public void InitializeValues(TankScriptableObject tankScriptableObject)
@@ -46,7 +61,8 @@ public class EnemyController : MonoBehaviour, IDamagable
 
         if (health <= 0)
         {
-            explosionController.Explode(tankExplosionParticle, tankExplosionAudio);
+            explosionController.Explode(tankExplosionParticle);
+            
             Destroy(gameObject);
         }
     }
@@ -63,14 +79,38 @@ public class EnemyController : MonoBehaviour, IDamagable
         currentState.OnEnterState();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private bool IsEnemyTurretFacingPlayer(GameObject player)
     {
+        float cosAngle = Vector3.Dot((player.transform.position - this.transform.position).normalized, tankTurret.transform.forward);
+        float angle = Mathf.Acos(cosAngle) * Mathf.Rad2Deg;
+
+        return angle <= 5;
+
+    }
+
+
+    private void OnTriggerStay(Collider other)
+    {
+        int turretSpeedRef = turretSpeed;
         if (other.gameObject.GetComponent<TankController>())
         {
-            ChangeState(tankAttackState);
-            gameObject.GetComponent<TankAttackState>().InitilaizePlayerTank(other.gameObject.transform);
+            
+            if(IsEnemyTurretFacingPlayer(other.gameObject))
+            {
+                rotateTurret = false;
+                Debug.Log("Fire player");
+                ChangeState(tankAttackState);
+            }
+
+            else
+            {
+                rotateTurret = true;
+            }
+            
         }
     }
+
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.GetComponent<TankController>())

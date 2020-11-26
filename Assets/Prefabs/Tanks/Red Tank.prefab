@@ -5272,6 +5272,7 @@ MonoBehaviour:
   tankExplosionAudio: {fileID: 8970349475929367001}
   startingState: {fileID: -6246488387442664212}
   tankAttackState: {fileID: 4637261788361330035}
+  tankTurret: {fileID: 4475885717571109282}
 --- !u!114 &-6246488387442664212
 MonoBehaviour:
   m_ObjectHideFlags: 0
