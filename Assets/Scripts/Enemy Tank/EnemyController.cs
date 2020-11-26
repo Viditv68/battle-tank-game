@@ -91,7 +91,6 @@ public class EnemyController : MonoBehaviour, IDamagable
 
     private void OnTriggerStay(Collider other)
     {
-        int turretSpeedRef = turretSpeed;
         if (other.gameObject.GetComponent<TankController>())
         {
             
