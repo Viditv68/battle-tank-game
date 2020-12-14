@@ -4,21 +4,27 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public GameObject player;        
+    public Transform playerTransform;
 
+    private Camera camera;
+    private Vector3 cameraOffset;
 
-    private Vector3 offset;  
+    [Range(0.1f, 1.0f)]
+    public float smoothFactor;
+    
+   
 
     void Start()
     {
-        
-        offset = transform.position - player.transform.position;
+        camera = GetComponentInChildren<Camera>();
+        cameraOffset = transform.position - playerTransform.position;
+
     }
 
  
     void LateUpdate()
     {
-        
-        transform.position = player.transform.position + offset;
+        Vector3 newPos = playerTransform.position - cameraOffset;
+        transform.position = Vector3.Slerp(transform.position, newPos, smoothFactor);
     }
 }
