@@ -36,6 +36,7 @@ public class TankController : MonoBehaviour, IDamagable
         if(Input.GetKeyDown(KeyCode.Space))
         {
             BulletService.Instance.Fire(fireTransform);
+            EventService.Instance.InvokeFireEvent();
 
         }
     }

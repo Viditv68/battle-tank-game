@@ -61,6 +61,7 @@ public class EnemyController : MonoBehaviour, IDamagable
 
         if (health <= 0)
         {
+            EventService.Instance.InvokeEnemyKilledEvent();
             explosionController.Explode(tankExplosionParticle);
             
             Destroy(gameObject);
