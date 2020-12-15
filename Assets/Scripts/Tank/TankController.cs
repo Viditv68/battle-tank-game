@@ -1,22 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class TankController : MonoBehaviour
+public class TankController : MonoBehaviour, IDamagable
 {
     [SerializeField]
     public Slider healthSlider;
-    [SerializeField]
-    private BulletController bulletController;
 
     [SerializeField]
     private ParticleSystem tankExplosionParticle;
     [SerializeField]
     private AudioSource tankExplosionAudio;
+    [SerializeField]
+    private ExplosionController explosionController;
 
     public Transform fireTransform;
 
-    private int bulletLayer = 8;
-    private float fireSpeed = 15f;
     private float movementSpeed = 12f;
     private float turnSpeed = 180f;
     private Joystick joystick;
@@ -37,7 +35,7 @@ public class TankController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            bulletController.Fire(fireTransform, this.gameObject);
+            BulletService.Instance.Fire(fireTransform);
 
         }
     }
@@ -82,18 +80,20 @@ public class TankController : MonoBehaviour
 
 
 
-    public void ApplyDamage(int damage)
+    public void TakeDamage(int damage)
     {
-        health -= 10;
+        health -= damage;
         healthSlider.value = health;
 
         if (health <= 0)
         {
-            TankService.Instance.DestroyTankOrBullet(tankExplosionParticle, tankExplosionAudio);
+            explosionController.Explode(tankExplosionParticle);
             Destroy(gameObject);
             TankService.Instance.playerDead = true;
         }
     }
+
+    
 
 
 }

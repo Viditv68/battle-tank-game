@@ -2,5 +2,5 @@
 
 public interface IDamagable
 {
-    void TakeDamage(int damage, GameObject gameObject);
+    void TakeDamage(int damage);
 }
